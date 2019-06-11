@@ -1,0 +1,25 @@
+{
+  "name": "SadGod",
+  "version": "1.0.0",
+  "description": "",
+  "main": "getCurrentSWF.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/L1lith/SadGod.git"
+  },
+  "keywords": [],
+  "author": "L1lith",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/L1lith/SadGod/issues"
+  },
+  "homepage": "https://github.com/L1lith/SadGod#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "jsdom": "^15.1.1",
+    "node-fetch": "^2.6.0"
+  }
+}

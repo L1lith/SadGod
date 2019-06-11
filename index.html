@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE" />
+	<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE" />
+	<META HTTP-EQUIV="Expires" CONTENT="-1" />
+
+	<title>Realm of the Mad God</title>
+	<script language="JavaScript" type="text/javascript">
+		var g_cacheBuster = "__rotmg_cb=1559918468";
+	</script>
+	<script src="js/AC_OETags.js?__rotmg_cb=1559918468" language="javascript"></script>
+	<script src="js/jquery-1.8.0.min.js?__rotmg_cb=1559918468" language="javascript"></script>
+	<script src="js/rotmg.UrlLib.js?__rotmg_cb=1559918468" language="javascript"></script>
+	<script src="js/rotmg.Paymentwall.js?__rotmg_cb=1559918468" language="javascript"></script>
+	<script src="js/rotmg.SalesForce.js?__rotmg_cb=1559918468" language="javascript"></script>
+	<script src="https://static.xsolla.com/embed/paystation/1.0.6/widget.min.js"></script>
+	<script src="js/rotmg.Xsolla.js?__rotmg_cb=1559918468" language="javascript"></script>
+	<script src="js/rotmg.Client.js?__rotmg_cb=1559918468" language="javascript"></script>
+	<link href="css/rotmg.common.css?__rotmg_cb=1559918468" type="text/css" rel="stylesheet" />
+
+	<style>
+		html {
+			display: table;
+			margin: auto;
+		}
+
+		body { 
+			display: table-cell;
+    		vertical-align: middle;
+			width: 864px !important;
+			margin: 0px; 
+			padding: 0; 
+			background: #111 url(
+				images/backgroundPattern.png
+			) repeat;
+			font-size:14px; 
+			font-weight: normal; 
+			color:#fff; 
+			font-family: 'myriad-pro', sans-serif; 
+			line-height: 18px;
+			overflow: hidden;
+		}
+
+		:link { color: #ffbe54; }
+		:hover { color: #fff; }
+
+		p {
+			margin: 5px;
+		}
+
+		h2 {
+			margin: 15px;
+		}
+
+		h3 {
+			margin: 5px;
+		}
+
+		a {
+			color: #ffbe54;
+            text-decoration: none;
+            font-weight: normal;
+            font-style: normal;
+		}
+
+		.KBPAY_IframeDialogCurtain {
+			position: absolute;
+			width: 2000px;
+			top:0;
+			left:0;
+			background-color:#000;
+			-moz-opacity:0.3;
+			opacity:.30;
+			filter:alpha(opacity=30);
+			-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+		}
+		.KBPAY_IframeDialog {
+			position: absolute;
+		}
+
+		.media {
+			position: absolute;
+			right: 0;
+			width: 40px;
+			margin: 8px 8px 2px 0;
+			opacity: 1;
+			visibility: visible;
+			transition: opacity .4s ease-in-out;
+			-moz-transition: opacity .4s ease-in-out; /* Firefox 4 */
+			-webkit-transition: opacity .4s ease-in-out; /* Safari and Chrome */
+			-ms-transition: opacity .4s ease-in-out; /* IE 9 */
+		}
+
+		.navigation {
+			position: absolute;
+			width: 32px;
+			margin: 0 0 2px 0;
+			opacity: 1;
+			visibility: visible;
+			transition: opacity .4s ease-in-out;
+			-moz-transition: opacity .4s ease-in-out; /* Firefox 4 */
+			-webkit-transition: opacity .4s ease-in-out; /* Safari and Chrome */
+			-ms-transition: opacity .4s ease-in-out; /* IE 9 */
+		}
+
+		.navigation ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+
+		.navigation ul li {
+			background-color: #242424;
+			width: 32px;
+			height: 32px;
+			float: left;
+
+		}
+
+		.navigation ul li a {
+			display: block;
+			font-size: 18px;
+			font-weight: bold;
+			color: #8c8c8c;
+			text-align: center;
+			padding: 6px;
+			text-decoration: none;
+			transition: all .25s ease-in;
+			-moz-transition: all .25s ease-in; /* Firefox 4 */
+			-webkit-transition: all .25s ease-in; /* Safari and Chrome */
+			-ms-transition: all .25s ease-in; /* IE 9 */
+		}
+
+		.navigation ul li a:hover {
+			color: #fff;
+			text-shadow: #000 0px 0px 8px;
+			background-color: #4a4a4a;
+		}
+
+		.active {
+			color: #fff !important;
+			text-shadow: #000 0px 0px 8px !important;
+			background-color: #4a4a4a !important;
+		}
+
+		.logo {
+		position: relative;
+		top: 0;
+		left: 0;
+		display: inline-block;
+		text-indent: -9999px;
+		width: 180px;
+		height: 71px;
+		background: transparent url(images/Logo_Deca.png) no-repeat 0 0;
+		transform: scale(1);
+		transition: transform .2s ease-in-out;
+		-moz-transition: transform .2s ease-in-out; /* Firefox 4 */
+		-webkit-transition: transform .2s ease-in-out; /* Safari and Chrome */
+		-ms-transition: transform .2s ease-in-out; /* IE 9 */
+		}
+
+		.logo:hover {
+		transform: scale(0.98);
+		background: transparent url(images/Logo_Deca.png) no-repeat 0 -142px;
+		}
+
+		.logo:after {
+		content: "";
+		position: absolute;
+		top: 0; left: 0; bottom: 0; right: 0;
+		background: transparent url(images/Logo_Deca.png) no-repeat;
+		background-position:  0 -142px;
+		opacity: 0;
+		transition: opacity .2s ease-in-out;
+		-moz-transition: opacity .2s ease-in-out; /* Firefox 4 */
+		-webkit-transition: opacity .2s ease-in-out; /* Safari and Chrome */
+		-ms-transition: opacity .2s ease-in-out; /* IE 9 */
+		}
+
+		.logo:hover:after {
+		opacity: 1;
+		}
+
+		.button {
+		text-transform: uppercase; 
+		background: #e23b20; 
+		color:#fff; 
+		padding: 10px 20px;
+		font-size: 14px;
+		transform: scale(1);
+		transition: all .2s ease-in-out;
+		-moz-transition: all .2s ease-in-out; /* Firefox 4 */
+		-webkit-transition: all .2s ease-in-out; /* Safari and Chrome */
+		-ms-transition: all .2s ease-in-out; /* IE 9 */
+		}
+
+		.button:hover {
+			background: #fff; 
+		color:#333; 
+		transform: scale(0.9) !important;
+		}
+
+
+		.social {
+		padding: 3px;
+		transform: scale(1);
+		transition: transform .2s ease-in-out;
+		-moz-transition: transform .2s ease-in-out; /* Firefox 4 */
+		-webkit-transition: transform .2s ease-in-out; /* Safari and Chrome */
+		-ms-transition: transform .2s ease-in-out; /* IE 9 */
+		}
+
+		.social:hover {
+		transform: scale(0.9) !important;
+		}
+
+		.footer {
+		margin-top: 15px;
+		}
+
+		.getFlash {
+		display: table-cell;
+		width: 800px;
+		height: 600px;
+		background: #000 url(
+				images/getFlashBackground.png
+			) repeat;
+		vertical-align: middle;
+		}
+		.getClient {
+		display: table-cell;
+		width: 800px;
+		height: 600px;
+		background: #000;
+		vertical-align: middle;
+		}
+		.content {
+		height: 80px;
+		margin: 60px;
+		vertical-align: middle;
+		}
+
+		#gameplay {
+			display: none;
+		}
+
+		#download {
+			display: none;
+		}
+
+		.show {
+			display: block !important;
+		}
+		@media only screen and (min-width:0px) and (max-width: 850px) {
+			* { 
+			margin: 0; 
+			border: 0; 
+			padding: 0; 
+			}
+
+			body { 
+			-webkit-text-size-adjust: none; 
+			}
+
+			.media {
+				visibility: hidden;
+				opacity: 0;
+			}
+
+			.navigation {
+				visibility: hidden;
+				opacity: 0;
+			}
+		}
+	</style>
+	
+	<script language="JavaScript" type="text/javascript">
+		//<!--
+		// -----------------------------------------------------------------------------
+		// Globals
+		// Major version of Flash required
+		var requiredMajorVersion = 11;
+		// Minor version of Flash required
+		var requiredMinorVersion = 2;
+		// Minor version of Flash required
+		var requiredRevision = 0;
+		// -----------------------------------------------------------------------------
+		// -->
+	</script>
+<body>
+	<div class="navigation">
+		<ul>
+			<li><a id="playButton" class="active" href="#gameplay"><img src="images/playButton.png" /></a></li>
+			<li><a id="downloadButton" href="#download"><img src="images/downloadButton.png" /></a></li>
+		</ul>
+	</div>	
+	<div class="media">
+		<a href="https://www.facebook.com/rotmg/" target="_blank"><img class="social" src="https://decagames.com/assets/email/facebook.png" alt="Facebook" /></a>
+		<a href="https://www.reddit.com/r/RotMG/" target="_blank"><img class="social" src="https://decagames.com/assets/email/reddit.png" alt="Reddit" /></a>
+		<a href="https://twitter.com/RotMG_news" target="_blank"><img class="social" src="https://decagames.com/assets/email/twitter.png" alt="Twitter" /></a>
+		<a href="https://discord.gg/rotmg" target="_blank"><img class="social" src="https://decagames.com/assets/email/discord.png" alt="Discord" /></a>
+		<a href="https://www.realmeye.com" target="_blank"><img class="social" src="https://decagames.com/assets/email/eye.png" alt="Realm Eye" /></a>
+	</div>
+<center>
+	<div id="gameplay" class="show">
+	<script language="JavaScript" type="text/javascript">
+		//<!--
+		//rotmg.Marketing.track("landing");
+
+		// Version check for the Flash Player that has the ability to start Player Product Install (6.0r65)
+		var hasProductInstall = DetectFlashVer(6, 0, 65);
+
+		// Version check based upon the values defined in globals
+		var hasRequestedVersion = DetectFlashVer(requiredMajorVersion, requiredMinorVersion, requiredRevision);
+
+		if ( hasProductInstall && !hasRequestedVersion ) {
+			// DO NOT MODIFY THE FOLLOWING FOUR LINES
+			// Location visited after installation is complete if installation is required
+			var MMPlayerType = (isIE == true) ? "ActiveX" : "PlugIn";
+			var MMredirectURL = window.location;
+			// document.title = document.title.slice(0, 47) + " - Flash Player Installation";
+			var MMdoctitle = document.title;
+
+			AC_FL_RunContent(
+					"src", "playerProductInstall",
+					"FlashVars", "MMredirectURL="+MMredirectURL+'&MMplayerType='+MMPlayerType+'&MMdoctitle='+MMdoctitle+""+'&version_timestamp=1559918468',
+					"width", "800",
+					"height", "600",
+					"align", "middle",
+					"id", "AGCLoader1559918468",
+					"class", "game_swf",
+					"quality", "high",
+					"bgcolor", "#000000",
+					"name", "AGCLoader1559918468",
+					"allowScriptAccess","sameDomain",
+					"type", "application/x-shockwave-flash",
+					"pluginspage", "https://www.adobe.com/go/getflashplayer"
+			);
+		} else if (hasRequestedVersion) {
+			// if we've detected an acceptable version
+			// embed the Flash Content SWF when all tests are passed
+			AC_FL_RunContent(
+					"src", "AGCLoader1559918468",
+					"FlashVars", rotmg.UrlLib.getProtocolString()+'&version_timestamp=1559918468',
+					"width", "800",
+					"height", "600",
+					"align", "middle",
+					"id", "AGCLoader1559918468",
+					"class", "game_swf",
+					"quality", "high",
+					"bgcolor", "#000000",
+					"name", "AGCLoader1559918468",
+					"allowScriptAccess","sameDomain",
+					"type", "application/x-shockwave-flash",
+					"wmode", "direct",
+					"pluginspage", "https://www.adobe.com/go/getflashplayer",
+					"style", "outline:none"
+			);
+		} else {  // flash is too old or we can't detect the plugin
+			var alternateContent = '<div class="getFlash"><img src="realmlogo.png" alt="Realm of the Mad God Logo" style="margin-top: -50px; padding: 15px;" /><h2>Playing Realm of the Mad God requires Flash!</h2> <h3><a href="https://www.adobe.com/go/getflash/">Get Flash or click here to activate.</a></h3></div>';
+			document.write(alternateContent);  // insert non-flash content
+		}
+		// -->
+	</script>
+	<noscript>
+		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+				id="AGCLoader1559918468" width="640" height="640" class="game_swf"
+				codebase="https://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
+			<param name="movie" value="AGCLoader1559918468.swf" />
+			<param name="quality" value="high" />
+			<param name="bgcolor" value="#000000" />
+			<param name="wmode" value="direct" />
+			<param name="allowScriptAccess" value="sameDomain" />
+			<embed src="AGCLoader1559918468.swf" quality="high" bgcolor="#000000"
+				width="800" height="600" name="AGCLoader1559918468" align="middle"
+				   play="true"
+				   loop="false"
+				   quality="high"
+				   allowScriptAccess="sameDomain"
+				   type="application/x-shockwave-flash"
+				   pluginspage="https://www.adobe.com/go/getflashplayer">
+			</embed>
+		</object>
+	</noscript>
+	<div id="paymentwallContainer" style='padding: 20px; position: relative; width:800px; display: none; margin-top: 20px'>
+		<a class='close'><span class='close' style='position:absolute; top:0; right:0; cursor: pointer;'> X </span> </a>
+	</div>
+	</div>
+	<div id="download">
+		<div class="getClient">
+			<div class="content">
+				<h2>Get started on setting up the game on your PC!</h2>
+				<h3><a href="https://www.realmeye.com/wiki/using-the-adobe-flash-projector" target="_blank">Using the Adobe Flash Projector.</a></h3>
+			</div>
+			<div class="content">
+				<h2>Get the latest Client.</h2>
+				<a href="AssembleeGameClient1559918468.swf" download="https://realmofthemadgodhrd.appspot.com/client" target="_blank">
+				<span class="button">Download SWF</span></a>
+			</div>
+			<div class="content">
+				<h2>Auto refreshing link.</h2>
+				<a href="#"><span class="copy-link">https://www.realmofthemadgod.com/client </br>(Click to Copy)</span></a>
+			</div>
+		</div>
+	</div>
+	<p>Thanks for playing Realm of the Mad God! Check out the <a href="https://www.reddit.com/r/RotMG/" target="_blank">RotMG subreddit</a> and <a href="https://www.realmeye.com/wiki/realm-of-the-mad-god" target="_blank">Wiki</a>.</p>
+	<div class="footer">
+		<a href="https://decagames.com" target="_blank"><div class="logo"></div></a>
+		<h4 style="margin-top: 0px; margin-bottom: 0px;">Copyright &copy; <script type="text/javascript">
+			var d = new Date()
+			document.write(d.getFullYear())
+			</script> DECA Games</h4>
+		<a href="https://decagames.com/privacy.html" target="_blank">Privacy</a> | <a href="https://decagames.com/tos.html" target="_blank">Terms</a>
+		<br/>
+	</div>
+</center>
+<script language="JavaScript" type="text/javascript">
+	$("#playButton").click(function(){
+		$("#playButton").addClass("active");
+		$("#downloadButton").removeClass("active");
+		$("#gameplay").addClass("show");
+		$("#download").removeClass("show");
+	});
+	$("#downloadButton").click(function(){
+		$("#playButton").removeClass("active");
+		$("#downloadButton").addClass("active");
+		$("#download").addClass("show");
+		$("#gameplay").removeClass("show");
+	});
+</script>
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
+<script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us19.list-manage.com","uuid":"68b5cf49a073a4a35b479388f","lid":"9d2d35c08b","uniqueMethods":true}) })</script>
+</body>
+</html>
