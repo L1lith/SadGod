@@ -1,6 +1,6 @@
 {
-  "name": "SadGod",
-  "version": "1.0.0",
+  "name": "sadgod",
+  "version": "0.1.0",
   "description": "",
   "main": "source/index.js",
   "scripts": {
