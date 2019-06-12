@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/L1lith/SadGod.git"
   },
-  "keywords": [],
+  "keywords": ["realm", "of", "the", "mad", "god", "rotmg", "packet", "id", "swf", "data", "scrape", "api", "game", "decompile", "decompiler"],
   "author": "L1lith",
   "license": "MIT",
   "bugs": {
