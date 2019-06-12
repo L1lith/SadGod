@@ -8,16 +8,29 @@ const standardPaths = {
 const gameServerConnectionPacketSectionRegex = /(?<=public class GameServerConnection[\s]*\n[\s]*{)[\S\s]*(?=public static var instance\:GameServerConnection)/i
 const packetIDRegex = /(?<=public static const )[A-Z]+\:int \= [0-9]+/gi
 
+const packetIDProxy = {
+  get: (target, prop) => {
+    try {
+      const id = parseInt(prop)
+      const match = (Object.entries(target).filter(([name, packetID]) => packetID === id)[0] || [])[0]
+      if (match) return match
+    } catch(error) {}
+    return target[prop]
+  }
+}
+
 async function parseExtractedData(swfData) {
   try {
     const output = JSON.parse(await readFile(swfData.cachePath, 'utf8'))
     output.cached = true
+    output.packetIDs = new Proxy(output.packetIDs, packetIDProxy)
     return output
   } catch(error) {}
   const {gameServerConnection} = await getFiles(swfData)
   const packetIDs = getPacketIDs(gameServerConnection)
   const output = {packetIDs}
   await writeFile(swfData.cachePath, JSON.stringify(output))
+  output.packetIDs = new Proxy(output.packetIDs, packetIDProxy)
   output.cached = false
   return output
 }
