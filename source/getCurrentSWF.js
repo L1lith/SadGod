@@ -9,8 +9,19 @@ const downloadFolder = join(__dirname, '..', 'downloads')
 const extractionFolder = join(__dirname, '..', 'extracted')
 const cacheFolder = join(__dirname, '..', 'cache')
 
+const applicationStorage = require('./applicationStorage')
+const swfAccessTime = 1000 * 60 * 60 * 24 // 1 Day
+
 async function getCurrentSWF() {
   const indexPage = await (await fetch(indexURL)).text()
+  const lastAccessed = isFinite(applicationStorage.lastAccessed) ? applicationStorage.lastAccessed : null
+  if (!lastAccessed || Date.now() > (new Date(lastAccessed)).getTime() + swfAccessTime || !applicationStorage.hasOwnProperty('lastSWFData')) {
+    delete applicationStorage.lastSWFData
+    applicationStorage.lastAccessed = Date.now()
+  } else {
+    console.log('returning cached data')
+    return new SWFData(applicationStorage.lastSWFData)
+  }
   const indexDOM = cheerio.load(indexPage, { xmlMode: true, decodeEntities: false })
   let loaderName = indexDOM('embed').filter((index, embed) => (embed.attribs.src || "").toLowerCase().startsWith("agcloader")).attr("src")
   if (!loaderName) throw new Error("Unable to find the game's swf entry point")
@@ -21,7 +32,9 @@ async function getCurrentSWF() {
   const swfExtractionFolder = join(extractionFolder, clientName)
   const url = indexURL + clientName + '.swf'
   const cachePath = join(cacheFolder, version + '.json')
-  return new SWFData({url, clientName, loaderName, version, downloadPath, extractionFolder: swfExtractionFolder, cachePath})
+  const output = new SWFData({url, clientName, loaderName, version, downloadPath, extractionFolder: swfExtractionFolder, cachePath})
+  applicationStorage.lastSWFData = output
+  return output
 }
 
 module.exports = getCurrentSWF
