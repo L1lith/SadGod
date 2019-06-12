@@ -18,6 +18,7 @@ async function extractSWF(swfData) {
   await mkdirp(swfData.extractionFolder)
   if (!(await isFolderEmpty(swfData.extractionFolder))) return // console.warn("It appears the library has already been extracted")
   await new Promise((resolve, reject) => {
+    console.log("Extracting the SWF scripts, this can take a long time!")
     jpexs.export( {
       file: swfData.downloadPath,
       output: swfData.extractionFolder,
