@@ -4,3 +4,4 @@ node_modules/
 /ffdec/
 /extracted/
 /cache/
+/internalStorage.json
