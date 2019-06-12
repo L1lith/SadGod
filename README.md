@@ -14,7 +14,7 @@ Step 2. Require and Use SadGod
 const {getCurrentSWFData} = require('sadgod')
 
 getCurrentSWFData.then(swfData => {
-    console.log(Got Data, swfData)
+    console.log(Got Data, swfData) // {packetIDs: {...} ...}
 }).catch(err => {
     console.log(err)
 })
