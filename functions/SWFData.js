@@ -6,4 +6,4 @@ class SWFData {
   }
 }
 
-module.exports = Object.freeze(SWFData)
+module.exports = SWFData
