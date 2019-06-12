@@ -4,21 +4,29 @@ const {promisify} = require('util')
 const SWFData = require('./SWFData')
 const exec = promisify(require('child_process').exec)
 const mkdirp = require('mkdirp')
+const jpexs = require( 'jpexs-flash-decompiler' )
+const isFolderEmpty = require('./isFolderEmpty')
 
-const ffdecLibPath = join(__dirname, '..', 'ffdec_lib.jar')
+//const ffdecLibPath = join(__dirname, '..', 'ffdec_lib.jar')
 const extractionFolder = join(__dirname, '..', 'extracted')
+const cacheFolder = join(__dirname, '..', 'cache')
 
 async function extractSWF(swfData) {
+  await mkdirp(cacheFolder)
   if (!(swfData instanceof SWFData)) throw new Error("Expected SWF Data")
   if (!(await exists(swfData.downloadPath))) throw new Error("This swf has not been downloaded.")
-  if (!(await exists(ffdecLibPath))) throw new Error("Could not find the ffdec_lib.jar in the project root")
   await mkdirp(swfData.extractionFolder)
-  const command = `java -jar ffdec_lib.jar -export script ${extractionFolder}`
-  console.log(command)
-  const { stdout, stderr } = await exec(command, {
-    cwd: join(__dirname, '..')
+  if (!(await isFolderEmpty(swfData.extractionFolder))) return // console.warn("It appears the library has already been extracted")
+  await new Promise((resolve, reject) => {
+    jpexs.export( {
+      file: swfData.downloadPath,
+      output: swfData.extractionFolder,
+      items: [ jpexs.ITEM.SCRIPT ]
+    }, err => {
+      if ( err ) return reject(err)
+      resolve()
+    } )
   })
-  console.log('aasdfas2342432  4324 234 324 ', stdout, stderr)
 }
 
 module.exports = extractSWF
