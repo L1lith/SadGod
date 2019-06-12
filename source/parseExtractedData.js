@@ -15,7 +15,13 @@ const packetIDProxy = {
       const match = (Object.entries(target).filter(([name, packetID]) => packetID === id)[0] || [])[0]
       if (match) return match
     } catch(error) {}
-    return target[prop]
+    if (target.hasOwnProperty(prop)) return target[prop]
+    const guessedKey = Object.keys(target).find(key => key.toLowerCase() === prop.toLowerCase())
+    if (guessedKey) {
+      return target[guessedKey]
+    } else {
+      return target[prop]
+    }
   }
 }
 
