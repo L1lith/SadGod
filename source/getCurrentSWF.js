@@ -19,7 +19,7 @@ async function getCurrentSWF() {
     delete applicationStorage.lastSWFData
     applicationStorage.lastAccessed = Date.now()
   } else {
-    console.log('returning cached data')
+    //console.log('returning cached data')
     return new SWFData(applicationStorage.lastSWFData)
   }
   const indexDOM = cheerio.load(indexPage, { xmlMode: true, decodeEntities: false })
