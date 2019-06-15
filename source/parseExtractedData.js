@@ -5,8 +5,8 @@ const standardPaths = {
   gameServerConnection: "scripts\\kabam\\rotmg\\messaging\\impl\\GameServerConnection.as"
 }
 
-const gameServerConnectionPacketSectionRegex = /(?<=public class GameServerConnection[\s]*\n[\s]*{)[\S\s]*(?=public static var instance\:GameServerConnection)/i
-const packetIDRegex = /(?<=public static const )[^:]+\:int \= [0-9]+/gi
+const gameServerConnectionPacketSectionRegex = /(?<=public class GameServerConnection)[\S\s]*(?=public static var instance\:GameServerConnection)/i
+const packetIDRegex = /(?<=public static const\s)[^:]+\:int\s\=\s[0-9]+/gi
 
 const packetIDProxy = {
   get: (target, prop) => {
