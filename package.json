@@ -1,6 +1,6 @@
 {
   "name": "sadgod",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "",
   "main": "source/index.js",
   "scripts": {
@@ -10,7 +10,23 @@
     "type": "git",
     "url": "git+https://github.com/L1lith/SadGod.git"
   },
-  "keywords": ["realm", "of", "the", "mad", "god", "rotmg", "packet", "id", "swf", "data", "scrape", "api", "game", "decompile", "decompiler"],
+  "keywords": [
+    "realm",
+    "of",
+    "the",
+    "mad",
+    "god",
+    "rotmg",
+    "packet",
+    "id",
+    "swf",
+    "data",
+    "scrape",
+    "api",
+    "game",
+    "decompile",
+    "decompiler"
+  ],
   "author": "L1lith",
   "license": "MIT",
   "bugs": {
@@ -22,7 +38,7 @@
     "download": "^7.1.0",
     "fs-extra": "^8.0.1",
     "jpexs-flash-decompiler": "0.0.4",
-    "mkdirp": "^0.5.1",
+    "mkdirp-promise": "^5.0.1",
     "node-fetch": "^2.6.0"
   }
 }

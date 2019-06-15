@@ -3,7 +3,7 @@ const {exists} = require('fs-extra')
 const {promisify} = require('util')
 const SWFData = require('./SWFData')
 const exec = promisify(require('child_process').exec)
-const mkdirp = require('mkdirp')
+const mkdirp = require('mkdirp-promise')
 const jpexs = require( 'jpexs-flash-decompiler' )
 const isFolderEmpty = require('./isFolderEmpty')
 
