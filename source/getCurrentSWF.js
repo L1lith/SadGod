@@ -10,7 +10,7 @@ const extractionFolder = join(__dirname, '..', 'extracted')
 const cacheFolder = join(__dirname, '..', 'cache')
 
 const applicationStorage = require('./applicationStorage')
-const swfAccessTime = 1000 * 60 * 60 * 24 // 1 Day
+const swfAccessTime = 1000 * 60 * 60 * 2 // 2 Hours
 
 async function getCurrentSWF() {
   const indexPage = await (await fetch(indexURL)).text()
