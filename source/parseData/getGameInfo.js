@@ -10,7 +10,7 @@ function getGameInfo(parameterSection) {
   parameterSection = (parameterSection.match(parameterSectionRegex) || [])[0]
   if (!parameterSection) throw new Error("Could not find the parameter section")
   let lines = parameterSection.match(parameterVariableRegex)
-  const output = {}
+  let output = {}
   lines.forEach(line => {
     const property = fixPropertyCasing(line.split(':')[0])//.replace(/_/g, '').toUpperCase()
     const valueString = line.split('=').slice(1).join('=')
@@ -21,7 +21,9 @@ function getGameInfo(parameterSection) {
       output[property] = valueString
     }
   })
+  output = renameProperties(output, gameInfoRenames)
   delete output.keyNames
+  output.buildVersion = output.majorVersion + '.' + output.minorVersion
   return output
 }
 
