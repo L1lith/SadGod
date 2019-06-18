@@ -1,5 +1,7 @@
 const evaljs = require('evaljs')
 const fixPropertyCasing = require('./fixPropertyCasing')
+const renameProperties = require('../renameProperties')
+const gameInfoRenames = require('./gameInfoRenames')
 
 const parameterSectionRegex = /(?<=public class Parameters)[\S\s]+(?=public function Parameters\(\))/i
 const parameterVariableRegex = /(?<=static (var|const) )[a-z\_]+(?:\:[a-z\_\.\<\>]+ = )[^\;\n]+(?=\;)/gi
