@@ -6,12 +6,12 @@ const getFiles = require('./getFiles')
 const getPacketIDs = require('./getPacketIDs')
 
 async function parseExtractedData(swfData) {
-  // try {
-  //   const output = JSON.parse(await readFile(swfData.cachePath, 'utf8'))
-  //   output.cached = true
-  //   output.packetIDs = new Proxy(output.packetIDs, packetIDProxy)
-  //   return output
-  // } catch(error) {}
+  try {
+    const output = JSON.parse(await readFile(swfData.cachePath, 'utf8'))
+    output.cached = true
+    output.packetIDs = new Proxy(output.packetIDs, packetIDProxy)
+    return output
+  } catch(error) {}
   const {gameServerConnection, parameterSection} = await getFiles(swfData)
   const packetIDs = getPacketIDs(gameServerConnection)
   const gameInfo = getGameInfo(parameterSection)
